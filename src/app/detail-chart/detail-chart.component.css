@@ -1,0 +1,6 @@
+*.floating
+{
+   float: left;
+   width: 32%;
+   border: solid 1px #cccccc;
+}

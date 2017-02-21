@@ -1,0 +1,43 @@
+<p>
+  detail-chart works!
+</p>
+  target:{{data.target}}
+  week:{{data.week}}<br />
+<li *ngIf="chartData.length > 0">
+  <!--<div><app-nvd3 [options]="chartOptions" [data]="chartValue"></app-nvd3></div>-->
+  
+  <div class="row">
+    <div class="floating">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="400"
+                  [datasets]="chartData"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    
+    <div class="floating" style="margin-bottom: 10px">
+      <table class="table table-responsive table-condensed">
+        <tr>
+          <th> year </th>
+          <th *ngFor="let label of chartLabels">{{label}}</th>
+        </tr>
+        <tr *ngFor="let d of chartData">
+          <td>{{d['label']}}
+          <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </table>
+      <!--<button (click)="randomize()">CLICK</button>-->
+    </div>
+  </div>
+</li>
+<div style="clear:both;"></div>
+
+
+
+

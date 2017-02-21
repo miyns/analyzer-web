@@ -1,3 +1,38 @@
 <h1>
   {{title}}
 </h1>
+
+
+<app-detail-chart [data]="selectedRow"></app-detail-chart>
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>target</th>
+      <th>week</th>
+      <th>average pips</th>
+      <th>count</th>
+      <th>up</th>
+      <th>down</th>
+      <th>stay</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data"
+    [class.selected]="row === selectedRow"
+    (click)="onSelect(row)">
+      <td><a href="http://127.0.0.1:8000/api/vweeks_week_detail/?target={{row.target}}&week={{row.week}}">{{row.target}}</a></td>
+      <td>{{row.week}}</td>
+      <td>{{row.avg_pips_ratio}}%</td>
+      <td>{{row.cnt}}</td>
+      <td>{{row.up}}%</td>
+      <td>{{row.down}}%</td>
+      <td>{{row.equal}}%</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
